@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 const Header = () => {
   return (
-    <Navbar style={{ zIndex: 1, background: 'linear-gradient(to right, #FA5B3C, #FFD2A6)' }} className="shadow border rounded position-fixed w-100">
+    <Navbar style={{ zIndex: 1, background: 'linear-gradient(to right, #FA5B3C, #FFD2A6)' }} className="shadow border rounded  w-100">
       <Container>
         <Navbar.Brand>
           {/* Removed href and using Link for navigation */}

@@ -8,7 +8,9 @@ import Footer from './components/Footer'
 import Pnf from './pages/Pnf'
 import { useContext } from 'react'
 import { tokenContext } from './context/TokenAuth'
-import UserResearch from './components/UserResearch'
+import View from './components/View'
+
+
 
 function App() {
   const{autherisedUser,setAutherisedUser}=useContext(tokenContext)
@@ -23,7 +25,8 @@ function App() {
       <>
         <Route path='/user' element={<User/>}/>
         <Route path='/research' element={<Research/>}/>
-        <Route path='/user-research' element={<UserResearch/>}/>
+        <Route path='/view' element={<View/>}/>
+        
       </>
       }
       <Route path='/*' element={<Pnf/>}/>

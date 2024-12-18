@@ -1,67 +1,154 @@
-import React, { useContext, useEffect, useState } from 'react'
-import Add from './Add'
-import Edit from './Edit'
-import { deleteResearchAPI, userResearchAPI } from '../services/allAPI'
-import { addResearchContext, editContextResearch } from '../context/ContextShare'
+// import React, { useContext, useEffect, useState } from 'react'
+// import Add from './Add'
+// import Edit from './Edit'
+// import { deleteResearchAPI, userResearchAPI } from '../services/allAPI'
+// import { addResearchContext, editContextResearch } from '../context/ContextShare'
+
+// const View = () => {
+//     const { editResearchResponse, setEditResearchResponse } = useContext(editContextResearch)
+//     const { addResearchResponse, setAddResearchResponse } = useContext(addResearchContext)
+//     // to display user research
+//     // create state to store user research
+//     const [userResearch, setUserResearch] = useState([])
+//     console.log(userResearch);
+
+//     useEffect(() => {
+//         getUserResearch()
+//     }, [addResearchResponse, editResearchResponse])
+
+//     // create a function for getting all research and call API inside that function store all user research inside state
+//     const getUserResearch = async () => {
+//         const token = sessionStorage.getItem("token")
+//         if (token) {
+//             const reqHeader = {
+//                 "Authorization": `Bearer ${token}`
+//             }
+//             try {
+//                 const result = await userResearchAPI(reqHeader)
+//                 console.log(result);
+//                 if (result.status === 200) {
+//                     setUserResearch(result.data)
+//                 }
+//             } catch (err) {
+//                 console.log(err);
+//             }
+//         }
+//     }
+
+//     // call that user research getting function using useEffect
+//     const removeResearch = async (id) => {
+//         const token = sessionStorage.getItem("token")
+//         if (token) {
+//             const reqHeader = {
+//                 "Authorization": `Bearer ${token}`
+//             }
+//             try {
+//                 const result = await deleteResearchAPI(id, reqHeader)
+//                 if (result.status === 200) {
+//                     getUserResearch()
+//                 }
+//             } catch (err) {
+//                 console.log(err);
+//             }
+//         }
+//     }
+
+//     return (
+//         <>
+//             <div className="d-flex justify-content-between mt-3">
+//                 <h2 className='text-warning'>All Research</h2>
+//                 <div>
+//                     <Add />
+//                 </div>
+//             </div>
+//             <div className='mt-2'>
+//                 {
+//                     userResearch.length > 0 ?
+//                         userResearch?.map(research => (
+//                             <div key={research?._id} className="border rounded p-2 d-flex justify-content-between mb-3">
+//                                 <h3>{research?.title}</h3>
+//                                 <div className="d-flex align-items-center">
+//                                     <div>
+//                                         <Edit research={research} />
+//                                     </div>
+
+//                                     <button style={{color:'black'}} onClick={() => removeResearch(research?._id)} className='btn'>
+//                                         <i  className='fa-solid fa-trash text-danger'></i>
+//                                     </button>
+//                                 </div>
+//                             </div>
+//                         ))
+//                         :
+//                         <div>You haven't uploaded any research yet....Add your research</div>
+//                 }
+//             </div>
+//         </>
+//     )
+// }
+
+// export default View
+
+import React, { useContext, useEffect, useState } from 'react';
+import Header from './Header'; // Make sure to import the Header
+import Add from './Add';
+import Edit from './Edit';
+import { deleteResearchAPI, userResearchAPI } from '../services/allAPI';
+import { addResearchContext, editContextResearch } from '../context/ContextShare';
 
 const View = () => {
-    const { editResearchResponse, setEditResearchResponse } = useContext(editContextResearch)
-    const { addResearchResponse, setAddResearchResponse } = useContext(addResearchContext)
-    // to display user research
-    // create state to store user research
-    const [userResearch, setUserResearch] = useState([])
-    console.log(userResearch);
+    const { editResearchResponse, setEditResearchResponse } = useContext(editContextResearch);
+    const { addResearchResponse, setAddResearchResponse } = useContext(addResearchContext);
+
+    const [userResearch, setUserResearch] = useState([]);
 
     useEffect(() => {
-        getUserResearch()
-    }, [addResearchResponse, editResearchResponse])
+        getUserResearch();
+    }, [addResearchResponse, editResearchResponse]);
 
-    // create a function for getting all research and call API inside that function store all user research inside state
     const getUserResearch = async () => {
-        const token = sessionStorage.getItem("token")
+        const token = sessionStorage.getItem("token");
         if (token) {
             const reqHeader = {
                 "Authorization": `Bearer ${token}`
-            }
+            };
             try {
-                const result = await userResearchAPI(reqHeader)
-                console.log(result);
+                const result = await userResearchAPI(reqHeader);
                 if (result.status === 200) {
-                    setUserResearch(result.data)
+                    setUserResearch(result.data);
                 }
             } catch (err) {
                 console.log(err);
             }
         }
-    }
+    };
 
-    // call that user research getting function using useEffect
     const removeResearch = async (id) => {
-        const token = sessionStorage.getItem("token")
+        const token = sessionStorage.getItem("token");
         if (token) {
             const reqHeader = {
                 "Authorization": `Bearer ${token}`
-            }
+            };
             try {
-                const result = await deleteResearchAPI(id, reqHeader)
+                const result = await deleteResearchAPI(id, reqHeader);
                 if (result.status === 200) {
-                    getUserResearch()
+                    getUserResearch();
                 }
             } catch (err) {
                 console.log(err);
             }
         }
-    }
+    };
 
     return (
         <>
-            <div className="d-flex justify-content-between mt-3">
+            <Header/> {/* Add Header */}
+            <div style={{marginTop:'50px'}} className="d-flex justify-content-between ">
                 <h2 className='text-warning'>All Research</h2>
                 <div>
                     <Add />
                 </div>
             </div>
-            <div className='mt-2'>
+            <div  className='mt-5'>
                 {
                     userResearch.length > 0 ?
                         userResearch?.map(research => (
@@ -72,8 +159,8 @@ const View = () => {
                                         <Edit research={research} />
                                     </div>
 
-                                    <button style={{color:'black'}} onClick={() => removeResearch(research?._id)} className='btn'>
-                                        <i  className='fa-solid fa-trash text-danger'></i>
+                                    <button style={{ color: 'black' }} onClick={() => removeResearch(research?._id)} className='btn'>
+                                        <i className='fa-solid fa-trash text-danger'></i>
                                     </button>
                                 </div>
                             </div>
@@ -83,8 +170,7 @@ const View = () => {
                 }
             </div>
         </>
-    )
-}
+    );
+};
 
-export default View
-
+export default View;
