@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import Home2 from '../components/Home2'
 
 import Home1 from '../components/Home1';
 
@@ -37,7 +38,7 @@ const Home = () => {
 
       <div className='my-5 text-center'>
         <h1 className='mb-5'>Explore Our Research</h1>
-        
+          <Home2/>
         <button onClick={handleNavigateResearch} className='btn btn-link mt-5'>CLICK HERE TO VIEW MORE RESEARCHES</button>
       </div>
 
