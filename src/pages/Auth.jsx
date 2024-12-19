@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react'
-import authimgone from '../assets/rotate7.png'
+import userimage from '../assets/user1.png'
 import { Form,FloatingLabel,Spinner } from 'react-bootstrap'
 import { Link, useNavigate } from 'react-router-dom'
 import { loginAPI, registerAPI } from '../services/allAPI'
@@ -69,52 +69,47 @@ const Auth = ({insideRegister}) => {
    }
 
   
-  return (
-    <div style={{minHeight:'100vh'}} className='d-flex justify-content-center align-items-center'>
-      <div className='container w-75'>
-        <div className='card shadow p-2'>
-          <div className='row align-items-center'>
-            <div className='col-lg-6'>
-              <img className='img-fluid' src={authimgone} alt="" />
-            </div>
-            <div className='col-lg-6'>
-              <h1 className='my-2'><i className='fa-brands fa-docker'></i>Research Showcase</h1>
-              <h5>Sign {insideRegister?'Up' :'In'} to your account</h5>
+  return ( 
+    <div style={{minHeight:'100vh',background: 'linear-gradient(to right, #FA5B3C, #FFD2A6)' ,display: 'grid', placeItems: 'center'}}>
+    <div className='container'style={{ position: 'relative' ,marginTop:'35px'}}>
+    <div>
+        <img style={{width:'300px',position: 'absolute', top: '-90px',  transform: 'translateX(-40%)', zIndex: '1',marginLeft:'600px' }} src={userimage} alt="no" />
+    </div>
+      <div className='card shadow p-4 w-75' style={{marginLeft:"170px",marginTop:'80px'}}>
+        <div>
+              <h1 style={{textAlign:"center"}} className='my-2'>Student Research Showcase</h1>
+              <h5 style={{color:'#FA5B3C'}}>Sign {insideRegister?'Up' :'In'} to your account</h5>
               <Form>
                 {
                   insideRegister &&
-                   <FloatingLabel controlId="floatingInputFirstName" label="First Name" className='mb-3'>
+                   <FloatingLabel controlId="floatingInputFirstName" label="👤 First Name" className='mb-3'>
                    <Form.Control value={userInput.firstname} onChange={e=>setUserInput({...userInput,firstname:e.target.value})} type="text" placeholder="First Name" />
                    </FloatingLabel>
                 }
                 {
                   insideRegister &&
-                   <FloatingLabel controlId="floatingInputLastName" label="Last Name" className='mb-3'>
+                   <FloatingLabel controlId="floatingInputLastName" label=" &nbsp; &nbsp;&nbsp; Last Name" className='mb-3'>
                    <Form.Control value={userInput.lastname} onChange={e=>setUserInput({...userInput,lastname:e.target.value})} type="text" placeholder="Last Name" />
                    </FloatingLabel>
                 }
               <FloatingLabel
                   controlId="floatingInput"
-                  label="Email address"
+                  label="✉️Email address"
                   className="mb-3">
              <Form.Control value={userInput.email} onChange={e=>setUserInput({...userInput,email:e.target.value})} type="email" placeholder="Email Address" />
              </FloatingLabel>
-             <FloatingLabel controlId="floatingPassword" label="Password" className='mb-2'>
+             <FloatingLabel controlId="floatingPassword" label="🔒Password" className='mb-2'>
              <Form.Control value={userInput.password} onChange={e=>setUserInput({...userInput,password:e.target.value})} type="password" placeholder="Password" />
              </FloatingLabel>
 
              {
               insideRegister ?
               <div className='mt-3'>
-                <button onClick={register} className='btn btn-primary mb-2'>Register</button>
                 <p>Existing User ? Please click here to <Link to={'/login'}>Login</Link></p>
 
               </div>
               :
               <div>
-                <button onClick={login} className='btn btn-primary mb-2'>Login
-                {isLogin && <Spinner className='ms-2' animation="border" variant="light" />}
-                </button>
                 <p>New User ? Please click here to <Link to={'/register'}>Register</Link></p>
               </div>
              }
@@ -124,11 +119,16 @@ const Auth = ({insideRegister}) => {
             </div>
 
           </div>
-
+          <div style={{background:"white",width:'750px',height:"100px",borderRadius:'10px',padding:'30px',marginLeft:'280px',marginTop:"-10px"}}>
+            {insideRegister?
+            <button onClick={register} className='btn btn-primary mb-2 shadow ' style={{width:'600px',marginLeft:'40px'}}>Register</button>:
+            <button onClick={login} className='btn btn-primary mb-2 mb-2 shadow ms-5' style={{width:'600px',marginLeft:'40px'}}>Login
+            </button>}
+            </div>
         </div>
 
       </div>
-    </div>
+    
   )
 }
 

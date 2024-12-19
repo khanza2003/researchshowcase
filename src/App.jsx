@@ -9,7 +9,7 @@ import Pnf from './pages/Pnf'
 import { useContext } from 'react'
 import { tokenContext } from './context/TokenAuth'
 import View from './components/View'
-
+import UserResearch from './pages/UserResearch'
 
 
 function App() {
@@ -26,7 +26,7 @@ function App() {
         <Route path='/user' element={<User/>}/>
         <Route path='/research' element={<Research/>}/>
         <Route path='/view' element={<View/>}/>
-        
+        <Route path="/research" element={<UserResearch/>} />
       </>
       }
       <Route path='/*' element={<Pnf/>}/>

@@ -11,7 +11,7 @@ const Slider = () => {
       link: '/image1',
       smallImages: [technology, art],
     },
-    { 
+    {
       src: technology,
       alt: 'Technology',
       link: '/image2',
@@ -40,16 +40,16 @@ const Slider = () => {
   }, []);
 
   return (
-    <div className='shadow rounded'
+    <div className='container shadow rounded'
       style={{
         background: 'linear-gradient(to right, #FA5B3C, #FFD2A6)',
         width: '100%',
-        minHeight: '100vh',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
+        minHeight: '80vh',
+       // display: 'flex',
+       // justifyContent: 'center',
+       // alignItems: 'center',
         padding: '50px 0',
-        marginTop:'50px'
+       // marginTop:'0px'
       }}
     >
       <div
@@ -64,8 +64,8 @@ const Slider = () => {
         {/* Large Background Image with Sliding Animation */}
         <div
           style={{
-            width: '75%',
-            height: '700px',
+            width: '100%',
+            height: '400px',
             textAlign: 'center',
             position: 'relative',
             backgroundSize: 'cover',
@@ -73,6 +73,7 @@ const Slider = () => {
             borderRadius: '10px',
             boxShadow: '0 4px 20px rgba(0, 0, 0, 0.2)',
             overflow: 'hidden',
+            marginLeft:'260px'
           }}
         >
           <div
@@ -168,7 +169,13 @@ const Slider = () => {
           >
             <h1 style={{ fontSize: '2.5rem',color:'black' }}>{images[currentIndex].alt}</h1>
             <p style={{ fontSize: '1.2rem',color:'black' }}>{images[currentIndex].alt} research involves exploring ideas, <br /> analyzing data, and discovering insights <br /> to solve problems or expand knowledge.</p>
-            <a
+    
+
+          </div>
+        </div>
+      </div>
+
+      <a
   href="/research"
   style={{
     color: 'black',
@@ -181,6 +188,7 @@ const Slider = () => {
     transition: 'all 0.3s ease',
     boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
     marginBottom: '20px',
+    marginTop:'30px'
   }}
   onMouseEnter={(e) => {
     e.target.style.background = 'linear-gradient(to right, #FA5B3C, #FFD2A6)';
@@ -193,14 +201,9 @@ const Slider = () => {
     e.target.style.color = 'black';
     e.target.style.transform = 'translateY(0)';
     e.target.style.boxShadow = '0 4px 6px rgba(0, 0, 0, 0.1)';
-  }}
->
-Explore {images[currentIndex].alt} Research
+  }}>
+Explore All Research
 </a>
-
-          </div>
-        </div>
-      </div>
     </div>
   );
 };
