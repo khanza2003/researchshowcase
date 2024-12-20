@@ -107,7 +107,7 @@ const User = () => {
       <div className="container-fluid py-5">
         <div className="row">
           <div className="col-lg-8">
-            <h1>Welcome <span className='text-warning'>{username}</span>,</h1>
+            <h1>Welcome <span style={{color:"#FA5B3C"}}>{username}</span>,</h1>
             <Profile />
           </div>
         </div>

@@ -94,6 +94,7 @@ import Add from './Add';
 import Edit from './Edit';
 import { deleteResearchAPI, userResearchAPI } from '../services/allAPI';
 import { addResearchContext, editContextResearch } from '../context/ContextShare';
+import ResearchCard from './ResearchCard';
 
 const View = () => {
     const { editResearchResponse, setEditResearchResponse } = useContext(editContextResearch);
@@ -143,7 +144,7 @@ const View = () => {
         <>
             <Header/> {/* Add Header */}
             <div style={{marginTop:'50px'}} className="d-flex justify-content-between ">
-                <h2 className='text-warning'>All Research</h2>
+                <h2 style={{color:'#FA5B3C'}}>All Research</h2>
                 <div>
                     <Add />
                 </div>
@@ -155,6 +156,7 @@ const View = () => {
                             <div key={research?._id} className="border rounded p-2 d-flex justify-content-between mb-3">
                                 <h3>{research?.title}</h3>
                                 <div className="d-flex align-items-center">
+                                <div><i className='fa-solid fa-eye text-danger'> <ResearchCard displayData={research} /></i></div>
                                     <div>
                                         <Edit research={research} />
                                     </div>

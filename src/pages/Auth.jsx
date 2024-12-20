@@ -127,6 +127,57 @@ const Auth = ({insideRegister}) => {
             </div>
         </div>
 
+
+        {/* Responsive Styling */}
+<style jsx>{`
+  @media (max-width: 768px) {
+    .user-image {
+      display: none;
+    }
+    .container {
+      margin-left: 0 !important;
+      margin-right: 0 !important;
+      padding: 20px;
+    }
+    .card {
+      margin-left: 0 !important;
+      width: 100% !important;
+      padding: 10px;
+    }
+    h1 {
+      font-size: 24px;
+    }
+    .form-control {
+      font-size: 14px;
+    }
+    .btn {
+      width: 100% !important;
+      font-size: 16px;
+    }
+    .button-container {
+      width: 300px !important;
+      margin-left: auto !important;
+      margin-right: auto !important;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .container {
+      padding: 10px;
+    }
+    .card {
+      width: 100% !important;
+    }
+    h1 {
+      font-size: 20px;
+    }
+    .form-control {
+      font-size: 12px;
+    }
+  }
+`}</style>
+
+
       </div>
     
   )

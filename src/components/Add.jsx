@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { Modal, Button } from 'react-bootstrap';
-import uploadimg from '../assets/rotate8.png';
+import uploadimg from '../assets/image2.png';
 import { addResearchAPI } from '../services/allAPI';
 import { addResearchContext } from '../context/ContextShare';
 

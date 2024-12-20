@@ -188,7 +188,7 @@
 
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom'; // For navigation
-import uploadImg from '../assets/user1.png'; // Default image for profile
+import uploadImg from '../assets/user.gif'; // Default image for profile
 import SERVER_BASE_URL from '../services/serverUrl'; // Replace with your server URL
 import { updateUserAPI } from '../services/allAPI'; // API function for updating user
 
@@ -271,10 +271,7 @@ const Profile = () => {
 
     return (
         <>
-            <div className="d-flex justify-content-evenly">
-                <h3 className='text-warning'>Profile</h3>
-            </div>
-            <div className='row container-fluid align-items-center justify-content-center shadow p-2 rounded'>
+            <div className='row container-fluid align-items-center justify-content-center shadow p-2 rounded' style={{marginLeft:"250px",background:'linear-gradient(to right, #FA5B3C, #FFD2A6)'}}>
                 <label className='text-center mb-2'>
                     <input
                         onChange={(e) => setUserDetails({ ...userDetails, profilePic: e.target.files[0] })}
@@ -301,9 +298,9 @@ const Profile = () => {
                         )
                     }
                 </label>
-                <h1 style={{ textAlign: 'center', color: 'orange' }}>{userDetails.firstName} {userDetails.lastName}</h1>
+                <h1 style={{ textAlign: 'center', color: 'rgb(48, 37, 37)' ,fontFamily:"Libre Baskerville", }}>{userDetails.firstName} {userDetails.lastName}</h1>
                 <div className="mb-2 w-100" style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-                    <h5>First Name:</h5>
+                    <strong>FirstName:&nbsp;</strong>
                     <input
                         value={userDetails.firstName}
                         onChange={(e) => setUserDetails({ ...userDetails, firstName: e.target.value })}
@@ -313,7 +310,7 @@ const Profile = () => {
                     />
                 </div>
                 <div className="mb-2 w-100" style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-                    <h5>Last Name:</h5>
+                    <strong>LastName:&nbsp;</strong>
                     <input
                         value={userDetails.lastName}
                         onChange={(e) => setUserDetails({ ...userDetails, lastName: e.target.value })}
@@ -323,7 +320,7 @@ const Profile = () => {
                     />
                 </div>
                 <div className="mb-2 w-100" style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-                    <h5>Email:</h5>
+                    <strong>Email:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</strong>
                     <input
                         value={userDetails.email}
                         onChange={(e) => setUserDetails({ ...userDetails, email: e.target.value })}
@@ -333,7 +330,7 @@ const Profile = () => {
                     />
                 </div>
                 <div className="mb-2 w-100" style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-                    <h5>Phone:</h5>
+                    <strong>Phone:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</strong>
                     <input
                         value={userDetails.phone}
                         onChange={(e) => setUserDetails({ ...userDetails, phone: e.target.value })}
@@ -343,7 +340,7 @@ const Profile = () => {
                     />
                 </div>
                 <div className="mb-2 w-100" style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-                    <h5>Address:</h5>
+                    <strong>Address:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</strong>
                     <input
                         value={userDetails.address}
                         onChange={(e) => setUserDetails({ ...userDetails, address: e.target.value })}
@@ -353,17 +350,7 @@ const Profile = () => {
                     />
                 </div>
                 <div className="mb-2 w-100" style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-                    <h5>Date of Birth:</h5>
-                    <input
-                        value={userDetails.dateOfBirth}
-                        onChange={(e) => setUserDetails({ ...userDetails, dateOfBirth: e.target.value })}
-                        type="date"
-                        placeholder='Date of Birth'
-                        className='form-control'
-                    />
-                </div>
-                <div className="mb-2 w-100" style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-                    <h5>Education:</h5>
+                    <strong>Education:</strong>
                     <input
                         value={userDetails.education}
                         onChange={(e) => setUserDetails({ ...userDetails, education: e.target.value })}
@@ -373,9 +360,9 @@ const Profile = () => {
                     />
                 </div>
                 <div className='d-grid w-100' style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-                    <button onClick={handleUserUpdate} className='btn btn-danger'>Update</button>
+                    <button onClick={handleUserUpdate} className='btn shadow' style={{marginTop:"15px",color: 'black', textDecoration: 'none', background: 'white', borderRadius: '10px', padding: '10px 20px', fontSize: '16px',display: 'inline-block',transition: 'all 0.3s ease',  boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',marginBottom:'20px'}}to={'/user'} onMouseEnter={(e) => {e.target.style.background = 'linear-gradient(to right,rgb(244, 92, 62),rgb(248, 169, 90))';e.target.style.color = 'white';e.target.style.transform = 'translateY(-5px)';e.target.style.boxShadow = '0 8px 12px rgba(0, 0, 0, 0.2)'; }} onMouseLeave={(e) => {e.target.style.background = 'white';e.target.style.color = 'black'; e.target.style.transform = 'translateY(0)'; e.target.style.boxShadow = '0 4px 6px rgba(0, 0, 0, 0.1)';}}>Update</button>
                     <Link to="/view">
-                        <button className='btn btn-danger'>My Research</button>
+                        <button className='btn w-100 shadow' style={{border:"none",color: 'black', textDecoration: 'none', background: 'white', borderRadius: '10px', padding: '10px 20px', fontSize: '16px',display: 'inline-block',transition: 'all 0.3s ease',  boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',marginBottom:'20px'}}to={'/user'} onMouseEnter={(e) => {e.target.style.background = 'linear-gradient(to right,rgb(243, 102, 73),rgb(248, 159, 71))';e.target.style.color = 'white';e.target.style.transform = 'translateY(-5px)';e.target.style.boxShadow = '0 8px 12px rgba(0, 0, 0, 0.2)'; }} onMouseLeave={(e) => {e.target.style.background = 'white';e.target.style.color = 'black'; e.target.style.transform = 'translateY(0)'; e.target.style.boxShadow = '0 4px 6px rgba(0, 0, 0, 0.1)';}}>My Research</button>
                     </Link>
                 </div>
             </div>

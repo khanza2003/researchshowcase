@@ -3,9 +3,11 @@ import Header from '../components/Header'
 import {Row,Col} from 'react-bootstrap'
 import ResearchCard from '../components/ResearchCard'
 import { allResearchAPI } from '../services/allAPI'
+import Image from '../assets/knowmore.gif'
 
 const Researches = () => {
   const[searchKey,setSearchKey]=useState("")
+  const [modalShow, setModalShow] = useState(false); 
   const [allResearches,setAllResearch]=useState([])
   console.log(allResearches);
   useEffect(()=>{
@@ -41,7 +43,27 @@ const Researches = () => {
           allResearches.length>0?
           allResearches?.map(research=>(
             <Col key={research?._id} className='mb-3' sm={12} md={6} lg={4}>
-            <ResearchCard displayData={research}/>
+            <div className='shadow' style={{background:'white',height:'150px',textAlign:'center'}}>
+              <h1 style={{color:'#FA5B3C',fontWeight:'900'}}>{research.title}</h1>
+              <div>
+            {/* Conditionally render the ResearchCard above the image */}
+            {modalShow && (
+                <div>
+                    <ResearchCard displayData={research} showInitially={modalShow} />
+                </div>
+            )}
+
+            {/* The image */}
+            <img
+                width={150}
+                src={Image}
+                alt=""
+                onClick={() => setModalShow(true)} // Trigger modal to open
+                style={{ cursor: 'pointer' }}
+            />
+            <h4>{research.category}</h4>
+        </div>
+            </div>
           </Col>
            )):
           <div className='fw-bolder text-danger'>Research Not Found!!!</div>

@@ -41,9 +41,9 @@ const Home = () => {
       </div>
 
       <div className='d-flex justify-content-center align-items-center my-5 flex-column'>
-        <h1>Our Testimonials</h1>
        <Home3/>
       </div>
+
     </>
   );
 };
