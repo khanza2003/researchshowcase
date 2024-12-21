@@ -1,9 +1,10 @@
 import React, { useContext, useState } from 'react'
 import userimage from '../assets/user1.png'
-import { Form,FloatingLabel,Spinner } from 'react-bootstrap'
+import { Form,FloatingLabel } from 'react-bootstrap'
 import { Link, useNavigate } from 'react-router-dom'
 import { loginAPI, registerAPI } from '../services/allAPI'
 import TokenAuth, { tokenContext } from '../context/TokenAuth'
+
 
 
 const Auth = ({insideRegister}) => {

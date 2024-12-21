@@ -76,6 +76,7 @@ const Favorite = () => {
               <div className="fw-bolder text-danger">No Favorite Research Found!!!</div>
           }
         </Row>
+        <div style={{minHeight:'180px'}}></div>
       </div>
     </>
   );
