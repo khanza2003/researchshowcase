@@ -106,7 +106,7 @@ const Add = () => {
               </label>
               {!uploadFileStatus &&
                 <div className="text-danger fw-bolder">
-                  *Upload only the following file types (PDF, DOC, TXT, MARKDOWN) here!!!
+                  *Upload your research file (PDF) here!!!
                 </div>}
             </div>
             <div className="col-lg-8">
@@ -120,15 +120,23 @@ const Add = () => {
                 />
               </div>
               <div className="mb-2">
-                <input
-                  value={researchDetails.category}
-                  onChange={e => setResearchDetails({ ...researchDetails, category: e.target.value })}
-                  className='form-control'
-                  type="text"
-                  placeholder='Research Category'
-                />
-                <div className='fw-bolder text-danger'>Research Category must be (Science,Art,Technology)!!</div>
-              </div>
+  <select
+    value={researchDetails.category}
+    onChange={e => setResearchDetails({ ...researchDetails, category: e.target.value })}
+    className="form-control"
+  >
+    <option value="">Select Research Category</option>
+    <option value="Science">Science</option>
+    <option value="Art">Art</option>
+    <option value="Technology">Technology</option>
+  </select>
+  {!['Science', 'Art', 'Technology'].includes(researchDetails.category) && (
+    <div className="fw-bolder text-danger">
+      {/*Research Category must be (Science, Art, Technology)!!*/}
+    </div>
+  )}
+</div>
+
               <div className="mb-2">
                 <textarea
                   value={researchDetails.description}

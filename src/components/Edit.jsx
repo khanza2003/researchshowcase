@@ -120,7 +120,7 @@ const Edit = ({ research }) => {
               </label>
               {!uploadFileStatus && (
                 <div className="text-warning fw-bolder">
-                  *Upload only the following file types (PDF, DOC, TXT, Markdown) here!!!
+                  *Upload your research file (PDF) here!!!
                 </div>
               )}
             </div>

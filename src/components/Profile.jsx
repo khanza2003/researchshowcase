@@ -234,14 +234,14 @@ const Profile = () => {
     const handleUserUpdate = async () => {
         const { firstName, lastName, email, phone, address, dateOfBirth, education, profilePic } = userDetails;
 
-        if (firstName && lastName && email && phone && address && dateOfBirth && education) {
+        if (firstName && lastName && email && phone && address && education) {
             const reqBody = new FormData();
             reqBody.append("firstName", firstName);
             reqBody.append("lastName", lastName);
             reqBody.append("email", email);
             reqBody.append("phone", phone);
             reqBody.append("address", address);
-            reqBody.append("dateOfBirth", dateOfBirth);
+           // reqBody.append("dateOfBirth", dateOfBirth);
             reqBody.append("education", education);
             preview
                 ? reqBody.append("profilePic", profilePic)

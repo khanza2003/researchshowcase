@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import science from '../assets/science.jpeg';
-import technology from '../assets/technology.jpeg';
-import art from '../assets/art.jpeg';
+import science from '../assets/science.png';
+import technology from '../assets/technology.png';
+import art from '../assets/art.png';
 
 const Slider = () => {
   const images = [
@@ -44,7 +44,7 @@ const Slider = () => {
       style={{
         background: 'linear-gradient(to right, #FA5B3C, #FFD2A6)',
         width: '100%',
-        minHeight: '80vh',
+        minHeight: '70vh',
        // display: 'flex',
        // justifyContent: 'center',
        // alignItems: 'center',
@@ -65,7 +65,7 @@ const Slider = () => {
         <div
           style={{
             width: '100%',
-            height: '400px',
+            height: '600px',
             textAlign: 'center',
             position: 'relative',
             backgroundSize: 'cover',
@@ -73,7 +73,8 @@ const Slider = () => {
             borderRadius: '10px',
             boxShadow: '0 4px 20px rgba(0, 0, 0, 0.2)',
             overflow: 'hidden',
-            marginLeft:'260px'
+            marginLeft:'260px',
+            background:'white'
           }}
         >
           <div
@@ -81,13 +82,15 @@ const Slider = () => {
               width: '100%',
               height: '100%',
               position: 'absolute',
-              backgroundImage: `url(${images[currentIndex].src})`,
+              //backgroundImage: `url(${images[currentIndex].src})`,
               transition: transitioning ? 'transform 1s ease-in-out' : 'none',
               transform: transitioning ? 'translateX(-100%)' : 'translateX(0)',
               backgroundRepeat:'no-repeat',
               backgroundSize:'cover'
             }}
-          ></div>
+          >
+            <img style={{marginTop:'100px',marginRight:'900px'}} src={images[currentIndex].src} alt="" />
+          </div>
 
 <div
   style={{
@@ -113,13 +116,16 @@ const Slider = () => {
               display: 'flex',
               gap: '10px',
               overflow: 'hidden',
+              
             }}
+            className='shadow rounded'
           >
             {/* First Small Image with Sliding Effect */}
             <div
               style={{
-                width: '100px',
-                height: '100px',
+                width: '150px',
+                height: '150px',
+                 background:'rgba(237, 103, 6)',
                 transition: transitioning ? 'transform 1s ease-in-out' : 'none',
                 transform: transitioning ? 'translateX(-100%)' : 'translateX(0)',
               }}
@@ -139,8 +145,9 @@ const Slider = () => {
             {/* Second Small Image (Static) */}
             <div
               style={{
-                width: '100px',
-                height: '100px',
+                width: '150px',
+                height: '150px',
+                 background:'rgba(237, 103, 6)'
               }}
             >
               <img
@@ -160,14 +167,13 @@ const Slider = () => {
           <div
             style={{
               position: 'absolute',
-              top: '50%',
-              left: '40%',
+              top: '20%',
+              left: '50%',
               transform: 'translate(-50%, -50%)',
-              color: '#fff',
-              textAlign:'left'
+              textAlign:'center'
             }}
           >
-            <h1 style={{ fontSize: '2.5rem',color:'black' }}>{images[currentIndex].alt}</h1>
+            <h1 style={{ fontSize: '2.5rem',color:'rgba(237, 103, 6)' }}>{images[currentIndex].alt}</h1>
             <p style={{ fontSize: '1.2rem',color:'black' }}>{images[currentIndex].alt} research involves exploring ideas, <br /> analyzing data, and discovering insights <br /> to solve problems or expand knowledge.</p>
     
 

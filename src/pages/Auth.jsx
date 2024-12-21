@@ -11,24 +11,24 @@ const Auth = ({insideRegister}) => {
   const[isLogin,setIsLogin]=useState(false)
   const navigate=useNavigate()
   const [userInput,setUserInput]=useState({
-    firstname:"", lastname:"", email:"", password:""
+    firstName:"", lastName:"", email:"", password:""
   })
   console.log(userInput);
 
   const register=async(e)=>{
    e.preventDefault()
-   if(userInput.firstname && userInput.lastname && userInput.password && userInput.email){
+   if(userInput.firstName && userInput.lastName && userInput.password && userInput.email){
     // api call
     try{
       const result=await registerAPI(userInput)
       if(result.status==200){
-        alert(`Welcome ${result.data?.firstname}, Please login to explore our research!!!`)
+        alert(`Welcome ${result.data?.firstName}, Please login to explore our research!!!`)
         navigate("/login")
-        setUserInput({firstname:"", lastname:"", email:"", password:""})
+        setUserInput({firstName:"", lastName:"", email:"", password:""})
       }else{
         if(result.response.status==406){
           alert(result.response.data)
-          setUserInput({firstname:"", lastname:"", email:"", password:""})
+          setUserInput({firstName:"", lastName:"", email:"", password:""})
         }
       }
     }catch(err){
@@ -52,7 +52,7 @@ const Auth = ({insideRegister}) => {
         setAutherisedUser(true)
         setTimeout(() => {
           navigate("/")
-         setUserInput({firstname:"", lastname:"", email:"", password:""})
+         setUserInput({firstName:"", lastName:"", email:"", password:""})
          setIsLogin(false)
         }, 2000);
        }else{
@@ -83,13 +83,13 @@ const Auth = ({insideRegister}) => {
                 {
                   insideRegister &&
                    <FloatingLabel controlId="floatingInputFirstName" label="👤 First Name" className='mb-3'>
-                   <Form.Control value={userInput.firstname} onChange={e=>setUserInput({...userInput,firstname:e.target.value})} type="text" placeholder="First Name" />
+                   <Form.Control value={userInput.firstName} onChange={e=>setUserInput({...userInput,firstName:e.target.value})} type="text" placeholder="First Name" />
                    </FloatingLabel>
                 }
                 {
                   insideRegister &&
                    <FloatingLabel controlId="floatingInputLastName" label=" &nbsp; &nbsp;&nbsp; Last Name" className='mb-3'>
-                   <Form.Control value={userInput.lastname} onChange={e=>setUserInput({...userInput,lastname:e.target.value})} type="text" placeholder="Last Name" />
+                   <Form.Control value={userInput.lastName} onChange={e=>setUserInput({...userInput,lastName:e.target.value})} type="text" placeholder="Last Name" />
                    </FloatingLabel>
                 }
               <FloatingLabel
@@ -121,7 +121,7 @@ const Auth = ({insideRegister}) => {
           </div>
           <div style={{background:"white",width:'750px',height:"100px",borderRadius:'10px',padding:'30px',marginLeft:'280px',marginTop:"-10px"}}>
             {insideRegister?
-            <button onClick={register} className='btn btn-primary mb-2 shadow ' style={{width:'600px',marginLeft:'40px'}}>Register</button>:
+            <button onClick={register} className='btn btn-primary mb-2 shadow ' style={{width:'600px',marginLeft:'40px'}} >Register</button>:
             <button onClick={login} className='btn btn-primary mb-2 mb-2 shadow ms-5' style={{width:'600px',marginLeft:'40px'}}>Login
             </button>}
             </div>

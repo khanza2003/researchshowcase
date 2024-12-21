@@ -620,6 +620,7 @@
 import React, { useState, useEffect } from 'react';
 import { getTopActiveUsersAPI } from '../services/allAPI'; // Ensure the correct path
 import roi from "../assets/roi.png";
+import { useNavigate } from 'react-router-dom';
 import defaultProfile from "../assets/popper.gif"; // Default image
 import imoji1 from "../assets/emoji1.gif";
 import imoji2 from "../assets/emji2.gif";
@@ -629,6 +630,7 @@ const Home3 = () => {
   const [activeUsers, setActiveUsers] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchUsers = async () => {
@@ -672,6 +674,8 @@ const Home3 = () => {
     if (rank === 2) return imoji3;
     return imoji2;
   };
+
+
 
   return (
     <div className="container">
@@ -734,6 +738,7 @@ const Home3 = () => {
             </div>
           ))}
         </div>
+       
       </div>
 
       <style jsx>{`

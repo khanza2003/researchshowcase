@@ -10,6 +10,7 @@ import { useContext } from 'react'
 import { tokenContext } from './context/TokenAuth'
 import View from './components/View'
 import UserResearch from './pages/UserResearch'
+import UserList from './pages/UserList'
 
 
 function App() {
@@ -27,6 +28,7 @@ function App() {
         <Route path='/research' element={<Research/>}/>
         <Route path='/view' element={<View/>}/>
         <Route path="/research" element={<UserResearch/>} />
+        <Route path='/favorite' element={<UserList/>}/>
       </>
       }
       <Route path='/*' element={<Pnf/>}/>

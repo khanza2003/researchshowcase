@@ -3,6 +3,8 @@ import { Link, useNavigate } from 'react-router-dom';
 import Home2 from '../components/Home2'
 import Home3 from '../components/Home3'
 import Home1 from '../components/Home1';
+import Header from '../components/Header';
+
 
 const Home = () => {
   const navigate = useNavigate();
@@ -32,6 +34,7 @@ const Home = () => {
 
   return (
     <>
+    <Header/>
       <div style={{ minHeight: '100vh' }} className='rounded  w-100'>
         <Home1/>
       </div>

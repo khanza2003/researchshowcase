@@ -48,3 +48,22 @@ export const getTopActiveUsersAPI = async (reqHeader) => {
   return await commonAPI("GET", `${SERVER_BASE_URL}/top-active-users`, {}, reqHeader);
 };
 
+
+
+
+
+
+// Add to Favorites
+export const addToFavoriteAPI = async (data, headers) => {
+  return await axios.post(`${SERVER_BASE_URL}/add-favorite`, data, { headers });
+};
+
+// Get Favorite Research
+export const getFavoriteResearchAPI = async (headers) => {
+  return await axios.get(`${SERVER_BASE_URL}/favorite-research`, { headers });
+};
+
+// Remove from Favorites
+export const removeFromFavoriteAPI = async (data, headers) => {
+  return await axios.post(`${SERVER_BASE_URL}/remove-favorite`, data, { headers });
+};

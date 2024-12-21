@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import Header from '../components/Header'
 import {Row,Col} from 'react-bootstrap'
 import ResearchCard from '../components/ResearchCard'
-import { allResearchAPI } from '../services/allAPI'
+import { allResearchAPI ,addToFavoriteAPI} from '../services/allAPI'
 import Image from '../assets/knowmore.gif'
 
 const Researches = () => {
@@ -30,6 +30,29 @@ const Researches = () => {
       }
     }
   }
+
+
+  // Add to Favorite
+  const handleFavorite = async (researchId) => {
+    const token = sessionStorage.getItem("token");
+    if (token) {
+      const reqHeader = {
+        "Authorization": `Bearer ${token}`,
+      };
+      try {
+        // Call API to add the research item to favorites
+        const result = await addToFavoriteAPI({ researchId }, reqHeader);
+        console.log(result);
+        if (result.status === 200) {
+          // Remove from the current list after favoriting
+          setAllResearch((prev) => prev.filter((research) => research._id !== researchId));
+          alert(`Research has been added to your favorites!`)
+        }
+      } catch (err) {
+        console.log(err);
+      }
+    }
+  };
   return (
     <>
     <Header/>
@@ -43,7 +66,7 @@ const Researches = () => {
           allResearches.length>0?
           allResearches?.map(research=>(
             <Col key={research?._id} className='mb-3' sm={12} md={6} lg={4}>
-            <div className='shadow' style={{background:'white',height:'150px',textAlign:'center'}}>
+            <div className='shadow' style={{background:'white',height:'220px',textAlign:'center'}}>
               <h1 style={{color:'#FA5B3C',fontWeight:'900'}}>{research.title}</h1>
               <div>
             {/* Conditionally render the ResearchCard above the image */}
@@ -62,6 +85,12 @@ const Researches = () => {
                 style={{ cursor: 'pointer' }}
             />
             <h4>{research.category}</h4>
+
+               {/* Favorite Button */}
+               <button style={{border:"none",background:"none"}} onClick={() => handleFavorite(research._id)}><i className="fa-solid fa-heart-circle-plus fa-xl" style={{color:" #fd1808"}}></i></button>
+
+
+
         </div>
             </div>
           </Col>
