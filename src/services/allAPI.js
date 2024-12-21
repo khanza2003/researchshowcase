@@ -48,11 +48,6 @@ export const getTopActiveUsersAPI = async (reqHeader) => {
   return await commonAPI("GET", `${SERVER_BASE_URL}/top-active-users`, {}, reqHeader);
 };
 
-
-
-
-
-
 // Add to Favorites
 export const addToFavoriteAPI = async (data, headers) => {
   return await axios.post(`${SERVER_BASE_URL}/add-favorite`, data, { headers });
